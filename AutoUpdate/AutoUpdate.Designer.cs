@@ -1,7 +1,7 @@
 ﻿
 namespace AutoUpdate
 {
-    partial class Form1
+    partial class AutoUpdate
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -50,7 +50,7 @@ namespace AutoUpdate
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(223, 9);
+            this.label2.Location = new System.Drawing.Point(303, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 32);
             this.label2.TabIndex = 2;
@@ -59,7 +59,7 @@ namespace AutoUpdate
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(447, 12);
+            this.textBox1.Location = new System.Drawing.Point(570, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 3;
@@ -70,22 +70,23 @@ namespace AutoUpdate
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(164, 53);
+            this.dataGridView1.Location = new System.Drawing.Point(42, 48);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(602, 208);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
-            // Form1
+            // AutoUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 268);
+            this.ClientSize = new System.Drawing.Size(691, 318);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "AutoUpdate";
             this.Text = "Checker";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

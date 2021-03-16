@@ -7,14 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AutoUpdate;
+using MySql.Data.MySqlClient;
 
 namespace AutoUpdate
 {
-    public partial class Form1 : Form
+    public partial class AutoUpdate : Form
     {
-        public Form1()
+        public AutoUpdate()
         {
             InitializeComponent();
+
+            DBConnector dbcon = new DBConnector();
+
+            dbcon.OpenDB();
+
+            string selectUpdateListSql = "SELECT * FROM CHECKER";
+
+            MySqlDataAdapter dbAdapter = dbcon.excuteSql(selectUpdateListSql);
+
+            dbcon.CloseDB();
+
+            DataTable table = new DataTable();
+
+            dbAdapter.Fill(table);
+
+            dataGridView1.DataSource = table;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -38,6 +57,11 @@ namespace AutoUpdate
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
