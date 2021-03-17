@@ -100,6 +100,8 @@ namespace AutoUpdate
             return resDataString;
         }
 
+
+
         public IniFile LoadIni()
         {
             IniFile ini = new IniFile();
