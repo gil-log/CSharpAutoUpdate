@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnector.cs" />
+    <Compile Include="Ini.cs" />
     <Compile Include="UpdateListDataSet.cs">
       <DependentUpon>UpdateListDataSet.xsd</DependentUpon>
     </Compile>
