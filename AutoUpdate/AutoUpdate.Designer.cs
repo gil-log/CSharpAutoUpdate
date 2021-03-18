@@ -30,12 +30,18 @@ namespace AutoUpdate
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.serverDGV = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.version_label = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.programDGV = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.clientIp_label = new System.Windows.Forms.Label();
+            this.logDGV = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.serverDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -48,30 +54,19 @@ namespace AutoUpdate
             this.label1.TabIndex = 0;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
+            // serverDGV
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(362, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 50);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Checker";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(42, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(789, 311);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.serverDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.serverDGV.Location = new System.Drawing.Point(33, 55);
+            this.serverDGV.Name = "serverDGV";
+            this.serverDGV.RowTemplate.Height = 23;
+            this.serverDGV.Size = new System.Drawing.Size(327, 204);
+            this.serverDGV.TabIndex = 4;
+            this.serverDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(42, 392);
+            this.button1.Location = new System.Drawing.Point(832, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 34);
             this.button1.TabIndex = 5;
@@ -82,12 +77,12 @@ namespace AutoUpdate
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(37, 47);
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(27, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 25);
+            this.label3.Size = new System.Drawing.Size(119, 32);
             this.label3.TabIndex = 6;
-            this.label3.Text = "버전 : ";
+            this.label3.Text = "서버 현황";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // version_label
@@ -99,21 +94,77 @@ namespace AutoUpdate
             this.version_label.Size = new System.Drawing.Size(0, 21);
             this.version_label.TabIndex = 7;
             // 
+            // programDGV
+            // 
+            this.programDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.programDGV.Location = new System.Drawing.Point(393, 55);
+            this.programDGV.Name = "programDGV";
+            this.programDGV.RowTemplate.Height = 23;
+            this.programDGV.Size = new System.Drawing.Size(546, 204);
+            this.programDGV.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(387, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 32);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "버전 관리";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // clientIp_label
+            // 
+            this.clientIp_label.AutoSize = true;
+            this.clientIp_label.Location = new System.Drawing.Point(152, 29);
+            this.clientIp_label.Name = "clientIp_label";
+            this.clientIp_label.Size = new System.Drawing.Size(56, 12);
+            this.clientIp_label.TabIndex = 10;
+            this.clientIp_label.Text = "접속 IP : ";
+            this.clientIp_label.Click += new System.EventHandler(this.label2_Click_1);
+            // 
+            // logDGV
+            // 
+            this.logDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.logDGV.Location = new System.Drawing.Point(33, 318);
+            this.logDGV.Name = "logDGV";
+            this.logDGV.RowTemplate.Height = 23;
+            this.logDGV.Size = new System.Drawing.Size(906, 150);
+            this.logDGV.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(27, 283);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 32);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "로그 기록";
+            this.label2.Click += new System.EventHandler(this.label2_Click_2);
+            // 
             // AutoUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 438);
+            this.ClientSize = new System.Drawing.Size(969, 480);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.logDGV);
+            this.Controls.Add(this.clientIp_label);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.programDGV);
             this.Controls.Add(this.version_label);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.serverDGV);
             this.Controls.Add(this.label1);
             this.Name = "AutoUpdate";
             this.Text = "Checker";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,11 +173,15 @@ namespace AutoUpdate
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView serverDGV;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label version_label;
+        private System.Windows.Forms.DataGridView programDGV;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label clientIp_label;
+        private System.Windows.Forms.DataGridView logDGV;
+        private System.Windows.Forms.Label label2;
     }
 }
 

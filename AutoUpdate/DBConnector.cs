@@ -38,9 +38,13 @@ namespace AutoUpdate
 
         public MySqlDataAdapter excuteSql(string sql)
         {
+            OpenDB();
+
             cmd = new MySqlCommand(sql, con);
             adapter = new MySqlDataAdapter(cmd);
-            
+
+            CloseDB();
+
             return adapter;
         }
 
