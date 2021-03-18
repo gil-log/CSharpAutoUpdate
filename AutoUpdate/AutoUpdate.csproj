@@ -65,6 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnector.cs" />
+    <Compile Include="Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update.Designer.cs">
+      <DependentUpon>Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ini.cs" />
     <Compile Include="UpdateListDataSet.cs">
       <DependentUpon>UpdateListDataSet.xsd</DependentUpon>
@@ -74,16 +80,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UpdateListDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="AutoUpdate.cs">
+    <Compile Include="Checker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AutoUpdate.Designer.cs">
-      <DependentUpon>AutoUpdate.cs</DependentUpon>
+    <Compile Include="Checker.Designer.cs">
+      <DependentUpon>Checker.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AutoUpdate.resx">
-      <DependentUpon>AutoUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="Checker.resx">
+      <DependentUpon>Checker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Update.resx">
+      <DependentUpon>Update.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="UpdateListDataSet.xsc">
       <DependentUpon>UpdateListDataSet.xsd</DependentUpon>
     </None>

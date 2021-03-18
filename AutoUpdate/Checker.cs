@@ -15,7 +15,7 @@ using System.Net;
 
 namespace AutoUpdate
 {
-    public partial class AutoUpdate : Form
+    public partial class Checker : Form
     {
         private string ftpId = "checker";
         private string ftpPwd = "dkfdptmdps404";
@@ -24,11 +24,30 @@ namespace AutoUpdate
         private MySqlDataAdapter dbAdapter;
         private DataTable table;
 
-        private String cellStr;
+        private string cellStr;
 
-        public AutoUpdate()
+        public Checker(String[] args)
         {
+
             InitializeComponent();
+
+            int argsCount = args.Length;
+
+            if (argsCount >= 2)
+            {
+                String arg = args[1];
+
+                updateBtn.Text = arg;
+
+                if (arg == "update")
+                {
+                    Update updateApp = new Update();
+                    updateApp.ShowDialog();
+                    this.Close();
+                }
+            }
+
+
 
             clientIp_label.Text = "접속 IP : " + GetAccessIP();
 
@@ -38,7 +57,10 @@ namespace AutoUpdate
 
             InitProgramDataGridView();
 
+            InitLogDataGridView();
+
             serverDGV.CellClick += serverGridView_CellClick;
+            programDGV.CellClick += programGridView_CellClick;
 
             string versionStr = ReadFileToString("readme.txt");
 
@@ -105,17 +127,27 @@ namespace AutoUpdate
             logDGV.Columns.Add("v_ip", "IP");
             logDGV.Columns.Add("v_stamp", "일자");
         }
-        public long UnixTimeNow()
 
+        public DateTime ConvertFromTimeStamp(double timestamp)
+        {
+            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return origin.AddSeconds(timestamp);
+        }
+        public long UnixTimeNow()
         {
             var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
 
             return (long)timeSpan.TotalSeconds;
-
         }
         public void GetLogInfo(string pSeq)
         {
-            string sql = "SELECT * FROM VERSION WHERE p_seq = " + pSeq + "ORDER BY v_stamp";
+            string pNameSql = "SELECT p_name FROM PROGRAM WHERE p_seq = " + pSeq;
+            dbAdapter = dbconn.excuteSql(pNameSql);
+            table = new DataTable();
+            dbAdapter.Fill(table);
+            string pName = table.Rows[0]["p_name"].ToString();
+
+            string sql = "SELECT * FROM VERSION WHERE p_seq = " + pSeq + " ORDER BY v_stamp DESC";
 
             dbAdapter = dbconn.excuteSql(sql);
 
@@ -127,6 +159,23 @@ namespace AutoUpdate
 
             int cnt = 0;
 
+            foreach (DataRow row in table.Rows)
+            {
+                string v_version = row["v_version"].ToString();
+                string v_comment = row["v_comment"].ToString();
+                string v_ip = row["v_ip"].ToString();
+                long v_stamp = Int64.Parse(row["v_stamp"].ToString());
+                DateTime dateTime = ConvertFromTimeStamp(v_stamp);
+
+                logDGV.Rows.Add();
+                logDGV.Rows[cnt].Cells["v_version"].Value = v_version;
+                logDGV.Rows[cnt].Cells["v_comment"].Value = v_comment;
+                logDGV.Rows[cnt].Cells["v_ip"].Value = v_ip;
+                logDGV.Rows[cnt].Cells["v_stamp"].Value = dateTime;
+                logDGV.Rows[cnt].Cells["p_name"].Value = pName;
+
+                cnt++;
+            }
         }
 
         public void GetProgramInfo(string host)
@@ -311,6 +360,18 @@ namespace AutoUpdate
         private void label2_Click_2(object sender, EventArgs e)
         {
 
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Update updateApp = new Update();
+            updateApp.ShowDialog();
+            this.Close();
         }
     }
 }

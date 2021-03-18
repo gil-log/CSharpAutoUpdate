@@ -16,7 +16,10 @@ namespace AutoUpdate
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AutoUpdate());
+
+            String[] args = Environment.GetCommandLineArgs();
+            Application.Run(new Checker(args));
+
         }
     }
 }

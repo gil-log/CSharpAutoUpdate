@@ -1,7 +1,7 @@
 ﻿
 namespace AutoUpdate
 {
-    partial class AutoUpdate
+    partial class Checker
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -39,6 +39,7 @@ namespace AutoUpdate
             this.clientIp_label = new System.Windows.Forms.Label();
             this.logDGV = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.updateBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.serverDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logDGV)).BeginInit();
@@ -60,13 +61,13 @@ namespace AutoUpdate
             this.serverDGV.Location = new System.Drawing.Point(33, 55);
             this.serverDGV.Name = "serverDGV";
             this.serverDGV.RowTemplate.Height = 23;
-            this.serverDGV.Size = new System.Drawing.Size(327, 204);
+            this.serverDGV.Size = new System.Drawing.Size(285, 400);
             this.serverDGV.TabIndex = 4;
             this.serverDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(832, 15);
+            this.button1.Location = new System.Drawing.Point(473, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 34);
             this.button1.TabIndex = 5;
@@ -97,7 +98,7 @@ namespace AutoUpdate
             // programDGV
             // 
             this.programDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.programDGV.Location = new System.Drawing.Point(393, 55);
+            this.programDGV.Location = new System.Drawing.Point(330, 55);
             this.programDGV.Name = "programDGV";
             this.programDGV.RowTemplate.Height = 23;
             this.programDGV.Size = new System.Drawing.Size(546, 204);
@@ -107,7 +108,7 @@ namespace AutoUpdate
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(387, 17);
+            this.label4.Location = new System.Drawing.Point(324, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 32);
             this.label4.TabIndex = 9;
@@ -127,28 +128,40 @@ namespace AutoUpdate
             // logDGV
             // 
             this.logDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.logDGV.Location = new System.Drawing.Point(33, 318);
+            this.logDGV.Location = new System.Drawing.Point(330, 307);
             this.logDGV.Name = "logDGV";
             this.logDGV.RowTemplate.Height = 23;
-            this.logDGV.Size = new System.Drawing.Size(906, 150);
+            this.logDGV.Size = new System.Drawing.Size(546, 148);
             this.logDGV.TabIndex = 11;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(27, 283);
+            this.label2.Location = new System.Drawing.Point(324, 272);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 32);
             this.label2.TabIndex = 12;
-            this.label2.Text = "로그 기록";
+            this.label2.Text = "작업 로그";
             this.label2.Click += new System.EventHandler(this.label2_Click_2);
+            // 
+            // updateBtn
+            // 
+            this.updateBtn.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.updateBtn.Location = new System.Drawing.Point(772, 11);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(104, 34);
+            this.updateBtn.TabIndex = 13;
+            this.updateBtn.Text = "업데이트";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.button2_Click);
             // 
             // AutoUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 480);
+            this.ClientSize = new System.Drawing.Size(903, 480);
+            this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.logDGV);
             this.Controls.Add(this.clientIp_label);
@@ -182,6 +195,7 @@ namespace AutoUpdate
         private System.Windows.Forms.Label clientIp_label;
         private System.Windows.Forms.DataGridView logDGV;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button updateBtn;
     }
 }
 
