@@ -180,6 +180,7 @@ namespace AutoUpdate
 
         public void GetProgramInfo(string host)
         {
+
             string sql = "SELECT * FROM PROGRAM WHERE P_SEQ != 0";
 
             dbAdapter = dbconn.excuteSql(sql);
